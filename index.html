@@ -1,86 +1,766 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vichet Thay's Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vichet Thay | Software Developer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@800&display=swap" rel="stylesheet">
   <style>
-    html {
-      scroll-behavior: smooth;
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --secondary: #10b981;
+      --dark: #0f172a;
+      --light: #f8fafc;
     }
-    .dark-mode {
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8fafc;
+      color: #1e293b;
+      transition: all 0.4s ease;
+      overflow-x: hidden;
+    }
+    
+    body.dark-mode {
       background-color: #0f172a;
+      color: #cbd5e1;
+    }
+    
+    h1, h2, h3, h4 {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 800;
+    }
+    
+    .section {
+      padding: 5rem 1.5rem;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .btn-primary {
+      background-color: var(--primary);
       color: white;
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(79, 70, 229, 0.25);
+    }
+    
+    .card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      height: 100%;
+    }
+    
+    .dark-mode .card {
+      background: #1e293b;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+    }
+    
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .dark-mode .card:hover {
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+    }
+    
+    .skill-badge {
+      display: inline-block;
+      padding: 0.5rem 1.2rem;
+      background: #e0e7ff;
+      border-radius: 50px;
+      font-weight: 500;
+      color: var(--primary);
+      margin: 0.25rem;
+      transition: all 0.3s ease;
+    }
+    
+    .dark-mode .skill-badge {
+      background: #312e81;
+      color: #c7d2fe;
+    }
+    
+    .skill-badge:hover {
+      transform: scale(1.05);
+      background: #c7d2fe;
+    }
+    
+    .dark-mode .skill-badge:hover {
+      background: #4338ca;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .nav-link {
+      position: relative;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: var(--primary);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #6366f1, #10b981);
+      opacity: 0.8;
+      z-index: 1;
+    }
+    
+    .hero-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      z-index: 0;
+    }
+    
+    .dark-mode .hero-bg {
+      opacity: 0.9;
+    }
+    
+    .profile-img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 5px solid white;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 5rem;
+      margin: 0 auto 2rem;
+    }
+    
+    .section-title {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 3rem;
+      font-size: 2.5rem;
+    }
+    
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+    
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: white;
+      color: var(--primary);
+      font-size: 1.5rem;
+      margin: 0 0.5rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .dark-mode .social-link {
+      background: #1e293b;
+      color: #c7d2fe;
+    }
+    
+    .social-link:hover {
+      transform: translateY(-5px);
+      background: var(--primary);
+      color: white;
+    }
+    
+    .contact-card {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+    }
+    
+    .dark-mode .contact-card {
+      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+    }
+    
+    .tech-icon {
+      font-size: 2rem;
+      margin-right: 1rem;
+      color: var(--primary);
+    }
+    
+    .dark-mode .tech-icon {
+      color: #c7d2fe;
+    }
+    
+    .wave {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      transform: rotate(180deg);
+    }
+    
+    .wave svg {
+      position: relative;
+      display: block;
+      width: calc(100% + 1.3px);
+      height: 100px;
+    }
+    
+    .wave .shape-fill {
+      fill: #FFFFFF;
+    }
+    
+    .dark-mode .wave .shape-fill {
+      fill: #0f172a;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .section {
+        padding: 3rem 1rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .profile-img {
+        width: 150px;
+        height: 150px;
+        font-size: 3.5rem;
+      }
+      
+      .hero-buttons {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .hero-buttons .btn {
+        width: 100%;
+      }
+    }
+    
+    /* Animation */
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
+    }
+    
+    .floating {
+      animation: float 4s ease-in-out infinite;
+    }
+    
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    .fade-in.appear {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans transition duration-300">
-  <header class="text-center py-10 bg-gradient-to-r from-blue-600 to-indigo-700 text-white shadow-md">
-    <h1 class="text-5xl font-extrabold tracking-tight">Vichet Thay's Portfolio</h1>
-    <p class="text-xl mt-3">Software Developer & Automation Enthusiast</p>
-    <button onclick="toggleDarkMode()" class="mt-5 bg-white text-blue-600 font-semibold px-5 py-2 rounded-full hover:bg-gray-100 shadow-md">Toggle Dark Mode</button>
-  </header>
-
-  <nav class="sticky top-0 z-50 bg-white border-b shadow-sm py-4 text-center space-x-6 text-lg font-medium">
-    <a href="#about" class="text-blue-600 hover:underline">About</a>
-    <a href="#projects" class="text-blue-600 hover:underline">Projects</a>
-    <a href="#skills" class="text-blue-600 hover:underline">Skills</a>
-    <a href="#contact" class="text-blue-600 hover:underline">Contact</a>
+<body>
+  <!-- Navigation -->
+  <nav class="fixed w-full py-4 px-6 z-50 bg-white bg-opacity-90 backdrop-blur-sm">
+    <div class="container flex justify-between items-center">
+      <a href="#" class="text-2xl font-bold gradient-text">Vichet Thay</a>
+      <div class="flex space-x-8">
+        <a href="#about" class="nav-link text-slate-800 dark-mode:text-white">About</a>
+        <a href="#projects" class="nav-link text-slate-800 dark-mode:text-white">Projects</a>
+        <a href="#skills" class="nav-link text-slate-800 dark-mode:text-white">Skills</a>
+        <a href="#contact" class="nav-link text-slate-800 dark-mode:text-white">Contact</a>
+      </div>
+      <button onclick="toggleDarkMode()" class="bg-slate-200 p-2 rounded-full hover:bg-slate-300 transition">
+        <i class="fas fa-moon text-slate-800"></i>
+      </button>
+    </div>
   </nav>
 
-  <section id="about" class="p-8 max-w-5xl mx-auto">
-    <h2 class="text-3xl font-bold mb-4 border-b pb-2">About Me</h2>
-    <p class="text-lg leading-relaxed">
-      Hi! I’m <strong>Thay Vichet</strong>, a 24-year-old software development student from Cambodia. I'm passionate about automation, backend development with Python/Django, and using tech to build income-generating systems. Currently, I’m learning advanced trading strategies like <em>ICT (Inner Circle Trader)</em>. I'm also focused on building practical tech skills to launch a scalable business.
-    </p>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-pattern"></div>
+    <div class="container hero-content text-center">
+      <div class="profile-img floating">
+        <span>VT</span>
+      </div>
+      <h1 class="text-5xl md:text-7xl font-bold mb-4 text-white">Vichet Thay</h1>
+      <h2 class="text-2xl md:text-3xl text-white mb-8">Software Developer & Automation Enthusiast</h2>
+      <p class="max-w-2xl mx-auto text-xl text-white mb-10">Building scalable systems with Python/Django and automating everything in sight</p>
+      <div class="hero-buttons flex justify-center gap-4">
+        <a href="#projects" class="btn btn-primary">
+          <i class="fas fa-code mr-2"></i>View Projects
+        </a>
+        <a href="#contact" class="btn bg-white text-slate-800 hover:bg-slate-100">
+          <i class="fas fa-paper-plane mr-2"></i>Contact Me
+        </a>
+      </div>
+    </div>
+    <div class="wave">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+        <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+        <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+      </svg>
+    </div>
   </section>
 
-  <section id="projects" class="p-8 max-w-5xl mx-auto bg-white rounded-xl shadow mt-10">
-    <h2 class="text-3xl font-bold mb-4 border-b pb-2">Projects</h2>
-    <div class="grid gap-6 md:grid-cols-2">
-      <div class="bg-slate-100 p-5 rounded-lg shadow hover:shadow-xl transition">
-        <h3 class="font-semibold text-xl mb-2">Job Apply Bot</h3>
-        <p>Uses Selenium to auto-apply to jobs with resume and form filling.</p>
-      </div>
-      <div class="bg-slate-100 p-5 rounded-lg shadow hover:shadow-xl transition">
-        <h3 class="font-semibold text-xl mb-2">Trading Dashboard</h3>
-        <p>Python-based app to track price action in real-time using market data APIs.</p>
+  <!-- About Section -->
+  <section id="about" class="section bg-white dark-mode:bg-slate-900">
+    <div class="container">
+      <h2 class="section-title fade-in">About <span class="gradient-text">Me</span></h2>
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="fade-in">
+          <p class="text-lg mb-4">
+            Hi! I'm <strong class="text-indigo-600 dark-mode:text-indigo-400">Thay Vichet</strong>, a 24-year-old software development student from Cambodia. I'm passionate about automation, backend development with Python/Django, and using tech to build income-generating systems.
+          </p>
+          <p class="text-lg mb-4">
+            Currently, I'm learning advanced trading strategies like <em class="text-emerald-600 dark-mode:text-emerald-400">ICT (Inner Circle Trader)</em> to combine my technical skills with financial markets. My goal is to create scalable technology solutions that solve real-world problems.
+          </p>
+          <p class="text-lg">
+            I'm constantly expanding my skill set and exploring new technologies to stay at the forefront of software development and automation.
+          </p>
+        </div>
+        <div class="fade-in">
+          <div class="bg-gray-100 dark-mode:bg-slate-800 p-8 rounded-2xl">
+            <h3 class="text-xl font-bold mb-4">My Journey</h3>
+            <div class="space-y-4">
+              <div class="flex items-start">
+                <div class="mr-4 mt-1">
+                  <i class="fas fa-graduation-cap text-indigo-600 dark-mode:text-indigo-400 text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold">Software Development Student</h4>
+                  <p>Studying modern development practices and technologies</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="mr-4 mt-1">
+                  <i class="fas fa-robot text-emerald-600 dark-mode:text-emerald-400 text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold">Automation Specialist</h4>
+                  <p>Creating bots and automated workflows to solve repetitive tasks</p>
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="mr-4 mt-1">
+                  <i class="fas fa-chart-line text-amber-600 dark-mode:text-amber-400 text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold">Trading Enthusiast</h4>
+                  <p>Applying technical analysis and algorithmic approaches to trading</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="skills" class="p-8 max-w-5xl mx-auto">
-    <h2 class="text-3xl font-bold mb-4 border-b pb-2">Skills</h2>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      <span class="bg-blue-100 text-blue-800 p-2 rounded text-center font-medium">Python</span>
-      <span class="bg-blue-100 text-blue-800 p-2 rounded text-center font-medium">Django</span>
-      <span class="bg-blue-100 text-blue-800 p-2 rounded text-center font-medium">Selenium</span>
-      <span class="bg-blue-100 text-blue-800 p-2 rounded text-center font-medium">HTML/CSS</span>
-      <span class="bg-blue-100 text-blue-800 p-2 rounded text-center font-medium">ICT Trading</span>
-      <span class="bg-blue-100 text-blue-800 p-2 rounded text-center font-medium">GitHub</span>
+  <!-- Projects Section -->
+  <section id="projects" class="section bg-slate-100 dark-mode:bg-slate-800">
+    <div class="container">
+      <h2 class="section-title fade-in">My <span class="gradient-text">Projects</span></h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Project 1 -->
+        <div class="fade-in">
+          <div class="card">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 rounded-full bg-indigo-100 dark-mode:bg-indigo-900 flex items-center justify-center mr-4">
+                  <i class="fas fa-briefcase text-indigo-600 dark-mode:text-indigo-400 text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold">Job Apply Bot</h3>
+              </div>
+              <p class="mb-4">An intelligent automation bot that applies to jobs using Selenium. It intelligently fills forms, uploads resumes, and tracks application status.</p>
+              <div class="flex flex-wrap mb-4">
+                <span class="skill-badge">Python</span>
+                <span class="skill-badge">Selenium</span>
+                <span class="skill-badge">Automation</span>
+                <span class="skill-badge">Web Scraping</span>
+              </div>
+              <a href="#" class="text-indigo-600 dark-mode:text-indigo-400 font-medium hover:underline">
+                View Details <i class="fas fa-arrow-right ml-1"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Project 2 -->
+        <div class="fade-in">
+          <div class="card">
+            <div class="p-6">
+              <div class="flex items-center mb-4">
+                <div class="w-12 h-12 rounded-full bg-emerald-100 dark-mode:bg-emerald-900 flex items-center justify-center mr-4">
+                  <i class="fas fa-chart-line text-emerald-600 dark-mode:text-emerald-400 text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold">Trading Dashboard</h3>
+              </div>
+              <p class="mb-4">A real-time trading dashboard that tracks price action, analyzes market data, and provides visual insights for informed trading decisions.</p>
+              <div class="flex flex-wrap mb-4">
+                <span class="skill-badge">Python</span>
+                <span class="skill-badge">Django</span>
+                <span class="skill-badge">Chart.js</span>
+                <span class="skill-badge">Market Data APIs</span>
+              </div>
+              <a href="#" class="text-indigo-600 dark-mode:text-indigo-400 font-medium hover:underline">
+                View Details <i class="fas fa-arrow-right ml-1"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section id="contact" class="p-8 max-w-5xl mx-auto bg-gray-100 rounded-xl shadow mt-10">
-    <h2 class="text-3xl font-bold mb-4 border-b pb-2">Contact</h2>
-    <p class="mb-2">Email: <a href="mailto:thayvichet9@gmail.com" class="text-blue-600 hover:underline">thayvichet9@gmail.com</a></p>
-    <p>Telegram: <a href="#" class="text-blue-600 hover:underline">@Alex_0494</a></p>
+  <!-- Skills Section -->
+  <section id="skills" class="section bg-white dark-mode:bg-slate-900">
+    <div class="container">
+      <h2 class="section-title fade-in">My <span class="gradient-text">Skills</span></h2>
+      
+      <div class="grid md:grid-cols-2 gap-12 mb-12">
+        <div class="fade-in">
+          <h3 class="text-2xl font-bold mb-6">Technical Expertise</h3>
+          <div class="space-y-6">
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="font-medium">Python & Django</span>
+                <span>90%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-2.5">
+                <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 90%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="font-medium">Automation (Selenium)</span>
+                <span>85%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-2.5">
+                <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 85%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="font-medium">Web Development</span>
+                <span>80%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-2.5">
+                <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 80%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="fade-in">
+          <h3 class="text-2xl font-bold mb-6">Trading & Analysis</h3>
+          <div class="space-y-6">
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="font-medium">ICT Strategies</span>
+                <span>75%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-2.5">
+                <div class="bg-emerald-600 h-2.5 rounded-full" style="width: 75%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="font-medium">Technical Analysis</span>
+                <span>70%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-2.5">
+                <div class="bg-emerald-600 h-2.5 rounded-full" style="width: 70%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-2">
+                <span class="font-medium">Market Data Analysis</span>
+                <span>80%</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-2.5">
+                <div class="bg-emerald-600 h-2.5 rounded-full" style="width: 80%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <h3 class="text-2xl font-bold mb-6 fade-in">Technologies & Tools</h3>
+      <div class="flex flex-wrap gap-4 fade-in">
+        <span class="skill-badge">
+          <i class="fab fa-python mr-2"></i> Python
+        </span>
+        <span class="skill-badge">
+          <i class="fas fa-cube mr-2"></i> Django
+        </span>
+        <span class="skill-badge">
+          <i class="fas fa-robot mr-2"></i> Selenium
+        </span>
+        <span class="skill-badge">
+          <i class="fab fa-html5 mr-2"></i> HTML5
+        </span>
+        <span class="skill-badge">
+          <i class="fab fa-css3-alt mr-2"></i> CSS3
+        </span>
+        <span class="skill-badge">
+          <i class="fab fa-git-alt mr-2"></i> Git
+        </span>
+        <span class="skill-badge">
+          <i class="fab fa-github mr-2"></i> GitHub
+        </span>
+        <span class="skill-badge">
+          <i class="fas fa-database mr-2"></i> SQL
+        </span>
+        <span class="skill-badge">
+          <i class="fas fa-chart-line mr-2"></i> TradingView
+        </span>
+      </div>
+    </div>
   </section>
 
-  <footer class="text-center mt-10 py-4 text-sm text-gray-500 bg-white border-t">
-    © 2025 Thay Vichet. Built with ♥ using HTML, Tailwind CSS, and JavaScript.
-    <br />
-    <a href="#" onclick="scrollToTop()" class="text-blue-600 hover:underline">Back to Top</a>
+  <!-- Contact Section -->
+  <section id="contact" class="section bg-slate-100 dark-mode:bg-slate-800">
+    <div class="container">
+      <h2 class="section-title fade-in">Get In <span class="gradient-text">Touch</span></h2>
+      <div class="grid md:grid-cols-2 gap-12">
+        <div class="contact-card fade-in">
+          <h3 class="text-2xl font-bold mb-4">Contact Information</h3>
+          <p class="mb-6">Feel free to reach out if you have any questions or collaboration opportunities!</p>
+          
+          <div class="space-y-4 mb-8">
+            <div class="flex items-center">
+              <i class="fas fa-envelope mr-4 text-xl"></i>
+              <div>
+                <h4 class="font-bold">Email</h4>
+                <a href="mailto:thayvichet9@gmail.com" class="hover:underline">thayvichet9@gmail.com</a>
+              </div>
+            </div>
+            <div class="flex items-center">
+              <i class="fab fa-telegram mr-4 text-xl"></i>
+              <div>
+                <h4 class="font-bold">Telegram</h4>
+                <a href="#" class="hover:underline">@Alex_0494</a>
+              </div>
+            </div>
+            <div class="flex items-center">
+              <i class="fas fa-map-marker-alt mr-4 text-xl"></i>
+              <div>
+                <h4 class="font-bold">Location</h4>
+                <p>Cambodia</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-8">
+            <h4 class="font-bold mb-4">Connect with me</h4>
+            <div class="flex">
+              <a href="#" class="social-link">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="#" class="social-link">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="#" class="social-link">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="social-link">
+                <i class="fab fa-telegram"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="fade-in">
+          <div class="card">
+            <div class="p-8">
+              <h3 class="text-2xl font-bold mb-6">Send a Message</h3>
+              <form>
+                <div class="mb-4">
+                  <label class="block text-gray-700 dark-mode:text-gray-300 mb-2">Name</label>
+                  <input type="text" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white dark-mode:bg-slate-800">
+                </div>
+                <div class="mb-4">
+                  <label class="block text-gray-700 dark-mode:text-gray-300 mb-2">Email</label>
+                  <input type="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white dark-mode:bg-slate-800">
+                </div>
+                <div class="mb-4">
+                  <label class="block text-gray-700 dark-mode:text-gray-300 mb-2">Message</label>
+                  <textarea rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-white dark-mode:bg-slate-800"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary w-full">
+                  <i class="fas fa-paper-plane mr-2"></i>Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 bg-white dark-mode:bg-slate-900 border-t border-gray-200 dark-mode:border-slate-800">
+    <div class="container text-center">
+      <div class="flex justify-center mb-6">
+        <a href="#" class="social-link">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="#" class="social-link">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="#" class="social-link">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#" class="social-link">
+          <i class="fab fa-telegram"></i>
+        </a>
+      </div>
+      <p class="text-gray-600 dark-mode:text-gray-400 mb-2">© 2025 Thay Vichet. All rights reserved.</p>
+      <p class="text-gray-600 dark-mode:text-gray-400">Built with ♥ using HTML, CSS, and JavaScript</p>
+    </div>
   </footer>
 
   <script>
+    // Dark mode toggle
     function toggleDarkMode() {
       document.body.classList.toggle('dark-mode');
+      const icon = document.querySelector('.fa-moon');
+      if (icon.classList.contains('fa-moon')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+      } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+      }
     }
+    
+    // Scroll to top
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+    
+    // Fade-in animation on scroll
+    document.addEventListener('DOMContentLoaded', function() {
+      const fadeElements = document.querySelectorAll('.fade-in');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('appear');
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+      
+      fadeElements.forEach(element => {
+        observer.observe(element);
+      });
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
   </script>
 </body>
 </html>
