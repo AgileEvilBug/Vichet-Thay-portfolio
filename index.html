@@ -10,74 +10,74 @@
       scroll-behavior: smooth;
     }
     .dark-mode {
-      background-color: #1a202c;
+      background-color: #0f172a;
       color: white;
     }
   </style>
 </head>
-<body class="bg-gray-100 text-gray-800 font-sans transition duration-300">
-  <header class="text-center p-8 bg-blue-600 text-white">
-    <h1 class="text-4xl font-bold">Vichet Thay's Portfolio</h1>
-    <p class="text-lg mt-2">Aspiring Software Developer & Automation Enthusiast</p>
-    <button onclick="toggleDarkMode()" class="mt-4 bg-white text-blue-600 px-4 py-2 rounded shadow">Toggle Dark Mode</button>
+<body class="bg-slate-50 text-slate-800 font-sans transition duration-300">
+  <header class="text-center py-10 bg-gradient-to-r from-blue-600 to-indigo-700 text-white shadow-md">
+    <h1 class="text-5xl font-extrabold tracking-tight">Vichet Thay's Portfolio</h1>
+    <p class="text-xl mt-3">Software Developer & Automation Enthusiast</p>
+    <button onclick="toggleDarkMode()" class="mt-5 bg-white text-blue-600 font-semibold px-5 py-2 rounded-full hover:bg-gray-100 shadow-md">Toggle Dark Mode</button>
   </header>
 
-  <nav class="text-center mt-4 space-x-4">
-    <a href="#about" class="text-blue-600">About</a>
-    <a href="#projects" class="text-blue-600">Projects</a>
-    <a href="#skills" class="text-blue-600">Skills</a>
-    <a href="#contact" class="text-blue-600">Contact</a>
+  <nav class="sticky top-0 z-50 bg-white border-b shadow-sm py-4 text-center space-x-6 text-lg font-medium">
+    <a href="#about" class="text-blue-600 hover:underline">About</a>
+    <a href="#projects" class="text-blue-600 hover:underline">Projects</a>
+    <a href="#skills" class="text-blue-600 hover:underline">Skills</a>
+    <a href="#contact" class="text-blue-600 hover:underline">Contact</a>
   </nav>
 
-  <section id="about" class="p-8 max-w-4xl mx-auto">
-    <h2 class="text-2xl font-bold mb-4">About Me</h2>
-    <p>
-      Hi! I’m Thay Vichet, a 24-year-old software development student from Cambodia. I'm passionate about automation, backend development with Python/Django, and using tech to build income-generating systems. Currently, I’m learning trading strategies like ICT (Inner Circle Trader).
+  <section id="about" class="p-8 max-w-5xl mx-auto">
+    <h2 class="text-3xl font-bold mb-4 border-b pb-2">About Me</h2>
+    <p class="text-lg leading-relaxed">
+      Hi! I’m <strong>Thay Vichet</strong>, a 24-year-old software development student from Cambodia. I'm passionate about automation, backend development with Python/Django, and using tech to build income-generating systems. Currently, I’m learning advanced trading strategies like <em>ICT (Inner Circle Trader)</em>. I'm also focused on building practical tech skills to launch a scalable business.
     </p>
   </section>
 
-  <section id="projects" class="p-8 max-w-4xl mx-auto">
-    <h2 class="text-2xl font-bold mb-4">Projects</h2>
-    <div class="grid gap-4 md:grid-cols-2">
-      <div class="bg-white p-4 rounded shadow hover:shadow-lg transition">
-        <h3 class="font-bold">Job Apply Bot</h3>
+  <section id="projects" class="p-8 max-w-5xl mx-auto bg-white rounded-xl shadow mt-10">
+    <h2 class="text-3xl font-bold mb-4 border-b pb-2">Projects</h2>
+    <div class="grid gap-6 md:grid-cols-2">
+      <div class="bg-slate-100 p-5 rounded-lg shadow hover:shadow-xl transition">
+        <h3 class="font-semibold text-xl mb-2">Job Apply Bot</h3>
         <p>Uses Selenium to auto-apply to jobs with resume and form filling.</p>
       </div>
-      <div class="bg-white p-4 rounded shadow hover:shadow-lg transition">
-        <h3 class="font-bold">Trading Dashboard</h3>
-        <p>Built with Python to track and monitor price action with APIs.</p>
+      <div class="bg-slate-100 p-5 rounded-lg shadow hover:shadow-xl transition">
+        <h3 class="font-semibold text-xl mb-2">Trading Dashboard</h3>
+        <p>Python-based app to track price action in real-time using market data APIs.</p>
       </div>
     </div>
   </section>
 
-  <section id="skills" class="p-8 max-w-4xl mx-auto">
-    <h2 class="text-2xl font-bold mb-4">Skills</h2>
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-      <span class="bg-white p-2 rounded shadow text-center">Python</span>
-      <span class="bg-white p-2 rounded shadow text-center">Django</span>
-      <span class="bg-white p-2 rounded shadow text-center">Selenium</span>
-      <span class="bg-white p-2 rounded shadow text-center">HTML/CSS</span>
-      <span class="bg-white p-2 rounded shadow text-center">GitHub</span>
+  <section id="skills" class="p-8 max-w-5xl mx-auto">
+    <h2 class="text-3xl font-bold mb-4 border-b pb-2">Skills</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <span class="bg-blue-100 text-blue-800 p-2 rounded text-center font-medium">Python</span>
+      <span class="bg-blue-100 text-blue-800 p-2 rounded text-center font-medium">Django</span>
+      <span class="bg-blue-100 text-blue-800 p-2 rounded text-center font-medium">Selenium</span>
+      <span class="bg-blue-100 text-blue-800 p-2 rounded text-center font-medium">HTML/CSS</span>
+      <span class="bg-blue-100 text-blue-800 p-2 rounded text-center font-medium">ICT Trading</span>
+      <span class="bg-blue-100 text-blue-800 p-2 rounded text-center font-medium">GitHub</span>
     </div>
   </section>
 
-  <section id="contact" class="p-8 max-w-4xl mx-auto">
-    <h2 class="text-2xl font-bold mb-4">Contact</h2>
-    <p>Email: <a href="mailto:youremail@example.com" class="text-blue-600">thayvichet9@gmail.com</a></p>
-    <p>Telegram: @Alex_0494</p>
+  <section id="contact" class="p-8 max-w-5xl mx-auto bg-gray-100 rounded-xl shadow mt-10">
+    <h2 class="text-3xl font-bold mb-4 border-b pb-2">Contact</h2>
+    <p class="mb-2">Email: <a href="mailto:thayvichet9@gmail.com" class="text-blue-600 hover:underline">thayvichet9@gmail.com</a></p>
+    <p>Telegram: <a href="#" class="text-blue-600 hover:underline">@Alex_0494</a></p>
   </section>
 
-  <footer class="text-center p-4 text-sm text-gray-500">
-    © 2025 Vichet Thay. Built with ♥ by Vichet Thay.
-    <br/>
-    <a href="#" onclick="scrollToTop()" class="text-blue-600">Back to Top</a>
+  <footer class="text-center mt-10 py-4 text-sm text-gray-500 bg-white border-t">
+    © 2025 Thay Vichet. Built with ♥ using HTML, Tailwind CSS, and JavaScript.
+    <br />
+    <a href="#" onclick="scrollToTop()" class="text-blue-600 hover:underline">Back to Top</a>
   </footer>
 
   <script>
     function toggleDarkMode() {
       document.body.classList.toggle('dark-mode');
     }
-
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
